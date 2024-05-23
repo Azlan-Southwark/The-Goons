@@ -1,9 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://caphybs1mswrt"]
+[gd_scene load_steps=33 format=3 uid="uid://caphybs1mswrt"]
 
 [ext_resource type="Texture2D" uid="uid://cv5r1lqkxvo2k" path="res://Map/Map Back.jpeg" id="1_xi0sg"]
 [ext_resource type="Script" path="res://Characters/Player.gd" id="2_taise"]
 [ext_resource type="Texture2D" uid="uid://cogqbahyf58k3" path="res://Characters/Main Char Sprite Sheet.png" id="3_aa6td"]
+[ext_resource type="Texture2D" uid="uid://dy82c1nnkkuev" path="res://Assets/Gun.png" id="4_5rvst"]
 [ext_resource type="Texture2D" uid="uid://dh8rksn6mb3f8" path="res://Characters/Crazy Lad/Crazy Lad.png.png" id="4_th1kp"]
+[ext_resource type="Texture2D" uid="uid://bcdvumebjwg4y" path="res://Assets/Sword.png" id="5_nafn7"]
+[ext_resource type="Texture2D" uid="uid://b4ophak73afg4" path="res://Assets/Gun Big.png" id="6_myhfr"]
+[ext_resource type="Script" path="res://Characters/Crazy Lad/CrazyLad.gd" id="8_54oo7"]
+[ext_resource type="Texture2D" uid="uid://crb1vh8jqq8p8" path="res://Characters/Connie.png" id="9_1k14m"]
+[ext_resource type="Texture2D" uid="uid://xt0coe0jvnio" path="res://Characters/Angus.png" id="10_eix3f"]
+[ext_resource type="Texture2D" uid="uid://crtlvaycvgqjv" path="res://Characters/Frankie.png" id="11_tcl6x"]
+[ext_resource type="Texture2D" uid="uid://cg06nlh0cty0" path="res://Characters/Zak.png" id="12_4kw56"]
+[ext_resource type="Script" path="res://Characters/Frankie/Frankie.gd" id="12_uyt7p"]
+[ext_resource type="Script" path="res://Characters/Zak/Zak.gd" id="13_k1lca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8sgpq"]
 radius = 24.0
@@ -141,8 +151,72 @@ _data = {
 "Walk Up": SubResource("Animation_1xre5")
 }
 
+[sub_resource type="Animation" id="Animation_t1dfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.785397]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/Sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(66, -9.00001)]
+}
+
+[sub_resource type="Animation" id="Animation_4swwm"]
+resource_name = "Sword Swing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.219708, 1.06247, 0.793629]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/Sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(49, -45), Vector2(66, 9.99999), Vector2(65, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kosn2"]
+_data = {
+"RESET": SubResource("Animation_t1dfu"),
+"Sword Swing": SubResource("Animation_4swwm")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ac05"]
 radius = 91.44
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f17wy"]
+radius = 48.0
 
 [node name="Main" type="Node2D"]
 
@@ -152,8 +226,25 @@ scale = Vector2(1.84714, 1.82)
 texture = ExtResource("1_xi0sg")
 metadata/_edit_lock_ = true
 
+[node name="UI" type="Node2D" parent="."]
+
+[node name="GunBig" type="Sprite2D" parent="UI"]
+position = Vector2(131, 68)
+scale = Vector2(1.71429, 1.71429)
+texture = ExtResource("6_myhfr")
+
+[node name="Gun" type="Sprite2D" parent="UI"]
+position = Vector2(371, 128)
+scale = Vector2(1.83855, 1.83855)
+texture = ExtResource("4_5rvst")
+
+[node name="Sword" type="Sprite2D" parent="UI"]
+position = Vector2(426, 16)
+scale = Vector2(1.48092, 1.48092)
+texture = ExtResource("5_nafn7")
+
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(518, 351)
+position = Vector2(442, 349)
 script = ExtResource("2_taise")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -183,14 +274,104 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 shape = SubResource("CircleShape2D_8sgpq")
 
+[node name="Weapons" type="Node2D" parent="Player"]
+
+[node name="Marker2D" type="Marker2D" parent="Player/Weapons"]
+position = Vector2(61, -4)
+
+[node name="Gun" type="Sprite2D" parent="Player/Weapons"]
+visible = false
+position = Vector2(74, 52)
+texture = ExtResource("4_5rvst")
+
+[node name="Sword" type="Sprite2D" parent="Player/Weapons"]
+position = Vector2(66, -9.00001)
+rotation = 0.785397
+texture = ExtResource("5_nafn7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Weapons"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_kosn2")
+}
+
+[node name="Connie" type="Sprite2D" parent="."]
+position = Vector2(228, 449)
+texture = ExtResource("9_1k14m")
+
+[node name="Angus" type="Sprite2D" parent="."]
+position = Vector2(193, 444)
+texture = ExtResource("10_eix3f")
+
 [node name="CrazyLad" type="Sprite2D" parent="."]
 position = Vector2(617, 342)
 scale = Vector2(0.514465, 0.514465)
 texture = ExtResource("4_th1kp")
+script = ExtResource("8_54oo7")
 
 [node name="Area2D" type="Area2D" parent="CrazyLad" groups=["Crazy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrazyLad/Area2D"]
 shape = SubResource("CircleShape2D_4ac05")
 
+[node name="Label" type="Label" parent="CrazyLad"]
+visible = false
+offset_left = -97.1883
+offset_top = 48.5942
+offset_right = 96.8117
+offset_bottom = 118.594
+theme_override_font_sizes/font_size = 51
+text = "Interact"
+
+[node name="Frankie" type="CharacterBody2D" parent="."]
+position = Vector2(1009, 316)
+script = ExtResource("12_uyt7p")
+
+[node name="Frankie Sprite" type="Sprite2D" parent="Frankie"]
+texture = ExtResource("11_tcl6x")
+
+[node name="Area2D" type="Area2D" parent="Frankie"]
+position = Vector2(-4, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frankie/Area2D"]
+shape = SubResource("CircleShape2D_f17wy")
+
+[node name="Label" type="Label" parent="Frankie"]
+visible = false
+offset_left = -97.1883
+offset_top = 48.5942
+offset_right = 96.8117
+offset_bottom = 118.594
+theme_override_font_sizes/font_size = 51
+text = "Interact"
+
+[node name="Zak" type="CharacterBody2D" parent="."]
+position = Vector2(1135, 311)
+script = ExtResource("13_k1lca")
+
+[node name="Zak Sprite" type="Sprite2D" parent="Zak"]
+texture = ExtResource("12_4kw56")
+
+[node name="Area2D" type="Area2D" parent="Zak"]
+position = Vector2(-4, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zak/Area2D"]
+shape = SubResource("CircleShape2D_f17wy")
+
+[node name="Label" type="Label" parent="Zak"]
+visible = false
+offset_left = -97.1883
+offset_top = 48.5942
+offset_right = 96.8117
+offset_bottom = 118.594
+theme_override_font_sizes/font_size = 51
+text = "Interact"
+
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="CrazyLad/Area2D" to="CrazyLad" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="CrazyLad/Area2D" to="CrazyLad" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Frankie/Area2D" to="Frankie" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Frankie/Area2D" to="Frankie" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Zak/Area2D" to="Zak" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Zak/Area2D" to="Zak" method="_on_area_2d_area_exited"]
