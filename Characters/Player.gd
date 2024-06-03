@@ -2,13 +2,15 @@ extends CharacterBody2D
 const Bulletpath = preload("res://Assets/Bullet.tscn")
 @onready var anim = $AnimationTree
 @export var Speed = 100
-
+@export var Ammo = 10
 var WeaponSlot = 1
+
 
 func _ready():
 	anim.active = true
 
 func _physics_process(delta):
+	$"../UI/Ammo".text = str(Ammo)
 	WeaponSlot = wrap(WeaponSlot,0,5)
 	#AIM AT MOUSE
 	$Weapons.look_at(get_global_mouse_position())
@@ -51,23 +53,28 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_area_entered(area : Area2D):
-	if area.is_in_group("Crazy"):
-		$"../CrazyLad/Label".visible = true
+	if area.is_in_group("Ammo"):
+		area.get_parent().queue_free()
+		Ammo += 10
+	if area.is_in_group("Health"):
+		area.get_parent().queue_free()
+		$Health.value += 10
+	pass
 
 func Fire():
 	var Bullet = Bulletpath.instantiate()
-	get_parent().add_child(Bullet)
-	Bullet.position = $Weapons/Marker2D.global_position
-	Bullet.rotation = $Weapons/Marker2D.global_rotation
-	Bullet.velocity = get_global_mouse_position() - Bullet.position
-	Bullet.velocity = $Weapons/Marker2D.global_transform.x * 500
-	#KnockBck
-	velocity += -$Weapons/Marker2D.global_transform.x * 5000
+	if Ammo > 0 :
+		get_parent().add_child(Bullet)
+		Bullet.position = $Weapons/Marker2D.global_position
+		Bullet.rotation = $Weapons/Marker2D.global_rotation
+		Bullet.velocity = get_global_mouse_position() - Bullet.position
+		Bullet.velocity = $Weapons/Marker2D.global_transform.x * 500
+		#KnockBck
+		velocity += -$Weapons/Marker2D.global_transform.x * 5000
+		Ammo -= 1
 	
 func Swing():
 	$Weapons/AnimationPlayer.play("Sword Swing")
 
 func _on_area_2d_area_exited(area):
-	if area.is_in_group("Crazy"):
-		$"../CrazyLad/Label".visible = false
-	pass # Replace with function body.
+	pass

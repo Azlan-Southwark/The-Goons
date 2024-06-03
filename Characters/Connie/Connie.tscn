@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://chu5pukhe02tn"]
+
+[ext_resource type="Script" path="res://Characters/Connie/Connie.gd" id="1_aq8xv"]
+[ext_resource type="Texture2D" uid="uid://crb1vh8jqq8p8" path="res://Characters/Connie/Connie.png" id="2_0f2dn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y1g3y"]
+radius = 48.0
+
+[node name="Connie" type="CharacterBody2D"]
+script = ExtResource("1_aq8xv")
+
+[node name="Angus" type="Sprite2D" parent="."]
+texture = ExtResource("2_0f2dn")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-4, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_y1g3y")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -97.1883
+offset_top = 48.5942
+offset_right = 96.8117
+offset_bottom = 118.594
+theme_override_font_sizes/font_size = 51
+text = "Interact"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

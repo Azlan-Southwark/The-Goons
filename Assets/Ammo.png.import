@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg06nlh0cty0"
-path="res://.godot/imported/Zak.png-63d19f956c2cc9de0dc329c61220ff63.ctex"
+uid="uid://dp1o0s82bwxd7"
+path="res://.godot/imported/Ammo.png-e106d3dfcbfb79fb713b15321132085d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Zak.png"
-dest_files=["res://.godot/imported/Zak.png-63d19f956c2cc9de0dc329c61220ff63.ctex"]
+source_file="res://Assets/Ammo.png"
+dest_files=["res://.godot/imported/Ammo.png-e106d3dfcbfb79fb713b15321132085d.ctex"]
 
 [params]
 

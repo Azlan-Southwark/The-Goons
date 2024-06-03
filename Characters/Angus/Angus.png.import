@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crtlvaycvgqjv"
-path="res://.godot/imported/Frankie.png-de3399d327496b5a2fc4be09ecac0dc3.ctex"
+uid="uid://xt0coe0jvnio"
+path="res://.godot/imported/Angus.png-028b6a1a4300d01b7618fa6a145f2d2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Frankie.png"
-dest_files=["res://.godot/imported/Frankie.png-de3399d327496b5a2fc4be09ecac0dc3.ctex"]
+source_file="res://Characters/Angus/Angus.png"
+dest_files=["res://.godot/imported/Angus.png-028b6a1a4300d01b7618fa6a145f2d2f.ctex"]
 
 [params]
 

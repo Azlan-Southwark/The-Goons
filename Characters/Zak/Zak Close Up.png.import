@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crb1vh8jqq8p8"
-path="res://.godot/imported/Connie.png-41c4cc290605274c12e563b5f0245e27.ctex"
+uid="uid://btm1lsgig8lci"
+path="res://.godot/imported/Zak Close Up.png-579d619442e6ae421d999e76f5c9807b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Connie.png"
-dest_files=["res://.godot/imported/Connie.png-41c4cc290605274c12e563b5f0245e27.ctex"]
+source_file="res://Characters/Zak/Zak Close Up.png"
+dest_files=["res://.godot/imported/Zak Close Up.png-579d619442e6ae421d999e76f5c9807b.ctex"]
 
 [params]
 

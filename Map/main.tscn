@@ -1,63 +1,23 @@
-[gd_scene load_steps=33 format=3 uid="uid://caphybs1mswrt"]
+[gd_scene load_steps=32 format=3 uid="uid://caphybs1mswrt"]
 
 [ext_resource type="Texture2D" uid="uid://cv5r1lqkxvo2k" path="res://Map/Map Back.jpeg" id="1_xi0sg"]
 [ext_resource type="Script" path="res://Characters/Player.gd" id="2_taise"]
 [ext_resource type="Texture2D" uid="uid://cogqbahyf58k3" path="res://Characters/Main Char Sprite Sheet.png" id="3_aa6td"]
 [ext_resource type="Texture2D" uid="uid://dy82c1nnkkuev" path="res://Assets/Gun.png" id="4_5rvst"]
-[ext_resource type="Texture2D" uid="uid://dh8rksn6mb3f8" path="res://Characters/Crazy Lad/Crazy Lad.png.png" id="4_th1kp"]
 [ext_resource type="Texture2D" uid="uid://bcdvumebjwg4y" path="res://Assets/Sword.png" id="5_nafn7"]
 [ext_resource type="Texture2D" uid="uid://b4ophak73afg4" path="res://Assets/Gun Big.png" id="6_myhfr"]
-[ext_resource type="Script" path="res://Characters/Crazy Lad/CrazyLad.gd" id="8_54oo7"]
-[ext_resource type="Texture2D" uid="uid://crb1vh8jqq8p8" path="res://Characters/Connie.png" id="9_1k14m"]
-[ext_resource type="Texture2D" uid="uid://xt0coe0jvnio" path="res://Characters/Angus.png" id="10_eix3f"]
-[ext_resource type="Texture2D" uid="uid://crtlvaycvgqjv" path="res://Characters/Frankie.png" id="11_tcl6x"]
-[ext_resource type="Texture2D" uid="uid://cg06nlh0cty0" path="res://Characters/Zak.png" id="12_4kw56"]
-[ext_resource type="Script" path="res://Characters/Frankie/Frankie.gd" id="12_uyt7p"]
-[ext_resource type="Script" path="res://Characters/Zak/Zak.gd" id="13_k1lca"]
+[ext_resource type="Texture2D" uid="uid://dp1o0s82bwxd7" path="res://Assets/Ammo.png" id="11_fwy7t"]
+[ext_resource type="PackedScene" uid="uid://cvahsvtw65gu6" path="res://Characters/Frankie/frankie.tscn" id="11_kg2bd"]
+[ext_resource type="PackedScene" uid="uid://chu5pukhe02tn" path="res://Characters/Connie/Connie.tscn" id="12_awaoy"]
+[ext_resource type="PackedScene" uid="uid://7t60nggyj7w4" path="res://Characters/Angus/angus.tscn" id="12_de36y"]
+[ext_resource type="Texture2D" uid="uid://c40lbatmexpb5" path="res://Assets/Health Pack.png" id="12_dvbio"]
+[ext_resource type="PackedScene" uid="uid://ckyqoglccktuk" path="res://Characters/Zak/zak.tscn" id="12_j55rw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slbge"]
+bg_color = Color(0, 0.715716, 0.404312, 0.427451)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8sgpq"]
 radius = 24.0
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mcfr"]
-animation = &"Walk Down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2445y"]
-animation = &"Walk Left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rfm88"]
-animation = &"Walk Right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b3jb0"]
-animation = &"Walk Up"
-
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_11xsr"]
-input_0/name = "Walk Down"
-input_0/auto_advance = false
-input_0/reset = true
-input_1/name = "Walk Right"
-input_1/auto_advance = false
-input_1/reset = true
-input_2/name = "Walk Up"
-input_2/auto_advance = false
-input_2/reset = true
-input_3/name = "Walk Left"
-input_3/auto_advance = false
-input_3/reset = true
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_j8dmt"]
-graph_offset = Vector2(-183.602, -11.8465)
-nodes/Walk/node = SubResource("AnimationNodeTransition_11xsr")
-nodes/Walk/position = Vector2(566.5, 33.5)
-"nodes/Walk Down/node" = SubResource("AnimationNodeAnimation_6mcfr")
-"nodes/Walk Down/position" = Vector2(260, -30)
-"nodes/Walk Left/node" = SubResource("AnimationNodeAnimation_2445y")
-"nodes/Walk Left/position" = Vector2(260, 330)
-"nodes/Walk Right/node" = SubResource("AnimationNodeAnimation_rfm88")
-"nodes/Walk Right/position" = Vector2(260, 90)
-"nodes/Walk Up/node" = SubResource("AnimationNodeAnimation_b3jb0")
-"nodes/Walk Up/position" = Vector2(260, 210)
-nodes/output/position = Vector2(880, 120)
-node_connections = [&"Walk", 0, &"Walk Down", &"Walk", 1, &"Walk Right", &"Walk", 2, &"Walk Up", &"Walk", 3, &"Walk Left", &"output", 0, &"Walk"]
 
 [sub_resource type="Animation" id="Animation_fjgqg"]
 length = 0.001
@@ -151,6 +111,47 @@ _data = {
 "Walk Up": SubResource("Animation_1xre5")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mcfr"]
+animation = &"Walk Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2445y"]
+animation = &"Walk Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rfm88"]
+animation = &"Walk Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b3jb0"]
+animation = &"Walk Up"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_11xsr"]
+input_0/name = "Walk Down"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "Walk Right"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "Walk Up"
+input_2/auto_advance = false
+input_2/reset = true
+input_3/name = "Walk Left"
+input_3/auto_advance = false
+input_3/reset = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_j8dmt"]
+graph_offset = Vector2(-183.602, -11.8465)
+nodes/Walk/node = SubResource("AnimationNodeTransition_11xsr")
+nodes/Walk/position = Vector2(566.5, 33.5)
+"nodes/Walk Down/node" = SubResource("AnimationNodeAnimation_6mcfr")
+"nodes/Walk Down/position" = Vector2(260, -30)
+"nodes/Walk Left/node" = SubResource("AnimationNodeAnimation_2445y")
+"nodes/Walk Left/position" = Vector2(260, 330)
+"nodes/Walk Right/node" = SubResource("AnimationNodeAnimation_rfm88")
+"nodes/Walk Right/position" = Vector2(260, 90)
+"nodes/Walk Up/node" = SubResource("AnimationNodeAnimation_b3jb0")
+"nodes/Walk Up/position" = Vector2(260, 210)
+nodes/output/position = Vector2(880, 120)
+node_connections = [&"Walk", 0, &"Walk Down", &"Walk", 1, &"Walk Right", &"Walk", 2, &"Walk Up", &"Walk", 3, &"Walk Left", &"output", 0, &"Walk"]
+
 [sub_resource type="Animation" id="Animation_t1dfu"]
 length = 0.001
 tracks/0/type = "value"
@@ -212,11 +213,10 @@ _data = {
 "Sword Swing": SubResource("Animation_4swwm")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ac05"]
-radius = 91.44
+[sub_resource type="CircleShape2D" id="CircleShape2D_q54yk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f17wy"]
-radius = 48.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_5luu8"]
+radius = 28.4429
 
 [node name="Main" type="Node2D"]
 
@@ -243,9 +243,26 @@ position = Vector2(426, 16)
 scale = Vector2(1.48092, 1.48092)
 texture = ExtResource("5_nafn7")
 
+[node name="Ammo" type="Label" parent="UI"]
+offset_left = 1162.0
+offset_top = 12.0
+offset_right = 1220.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(442, 349)
 script = ExtResource("2_taise")
+
+[node name="Health" type="ProgressBar" parent="Player"]
+top_level = true
+offset_left = 36.0
+offset_top = 85.0
+offset_right = 372.0
+offset_bottom = 152.0
+theme_override_styles/background = SubResource("StyleBoxFlat_slbge")
+value = 71.53
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.0848632, 0.0848632)
@@ -258,6 +275,9 @@ shape = SubResource("CircleShape2D_8sgpq")
 
 [node name="AnimationTree" type="AnimationTree" parent="Player"]
 active = false
+libraries = {
+"": SubResource("AnimationLibrary_7sa2b")
+}
 tree_root = SubResource("AnimationNodeBlendTree_j8dmt")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Walk/current_state = "Walk Right"
@@ -295,83 +315,37 @@ libraries = {
 "": SubResource("AnimationLibrary_kosn2")
 }
 
-[node name="Connie" type="Sprite2D" parent="."]
-position = Vector2(228, 449)
-texture = ExtResource("9_1k14m")
+[node name="Frankie" parent="." instance=ExtResource("11_kg2bd")]
 
-[node name="Angus" type="Sprite2D" parent="."]
-position = Vector2(193, 444)
-texture = ExtResource("10_eix3f")
+[node name="Zak" parent="." instance=ExtResource("12_j55rw")]
+position = Vector2(580, 342)
 
-[node name="CrazyLad" type="Sprite2D" parent="."]
-position = Vector2(617, 342)
-scale = Vector2(0.514465, 0.514465)
-texture = ExtResource("4_th1kp")
-script = ExtResource("8_54oo7")
+[node name="Angus" parent="." instance=ExtResource("12_de36y")]
+position = Vector2(192, 440)
 
-[node name="Area2D" type="Area2D" parent="CrazyLad" groups=["Crazy"]]
+[node name="Connie" parent="." instance=ExtResource("12_awaoy")]
+position = Vector2(295, 441)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CrazyLad/Area2D"]
-shape = SubResource("CircleShape2D_4ac05")
+[node name="Ammo" type="Sprite2D" parent="."]
+position = Vector2(712, 330)
+scale = Vector2(2.22631, 2.22631)
+texture = ExtResource("11_fwy7t")
 
-[node name="Label" type="Label" parent="CrazyLad"]
-visible = false
-offset_left = -97.1883
-offset_top = 48.5942
-offset_right = 96.8117
-offset_bottom = 118.594
-theme_override_font_sizes/font_size = 51
-text = "Interact"
+[node name="Area2D" type="Area2D" parent="Ammo" groups=["Ammo"]]
 
-[node name="Frankie" type="CharacterBody2D" parent="."]
-position = Vector2(1009, 316)
-script = ExtResource("12_uyt7p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ammo/Area2D"]
+position = Vector2(-18.8653, 7.18676)
+shape = SubResource("CircleShape2D_q54yk")
 
-[node name="Frankie Sprite" type="Sprite2D" parent="Frankie"]
-texture = ExtResource("11_tcl6x")
+[node name="HealthPack" type="Sprite2D" parent="."]
+position = Vector2(531, 461)
+texture = ExtResource("12_dvbio")
 
-[node name="Area2D" type="Area2D" parent="Frankie"]
-position = Vector2(-4, -2)
+[node name="Area2D" type="Area2D" parent="HealthPack" groups=["Health"]]
+position = Vector2(-20, -3)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Frankie/Area2D"]
-shape = SubResource("CircleShape2D_f17wy")
-
-[node name="Label" type="Label" parent="Frankie"]
-visible = false
-offset_left = -97.1883
-offset_top = 48.5942
-offset_right = 96.8117
-offset_bottom = 118.594
-theme_override_font_sizes/font_size = 51
-text = "Interact"
-
-[node name="Zak" type="CharacterBody2D" parent="."]
-position = Vector2(1135, 311)
-script = ExtResource("13_k1lca")
-
-[node name="Zak Sprite" type="Sprite2D" parent="Zak"]
-texture = ExtResource("12_4kw56")
-
-[node name="Area2D" type="Area2D" parent="Zak"]
-position = Vector2(-4, -2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zak/Area2D"]
-shape = SubResource("CircleShape2D_f17wy")
-
-[node name="Label" type="Label" parent="Zak"]
-visible = false
-offset_left = -97.1883
-offset_top = 48.5942
-offset_right = 96.8117
-offset_bottom = 118.594
-theme_override_font_sizes/font_size = 51
-text = "Interact"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthPack/Area2D"]
+shape = SubResource("CircleShape2D_5luu8")
 
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player/Area2D" to="Player" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="CrazyLad/Area2D" to="CrazyLad" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="CrazyLad/Area2D" to="CrazyLad" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Frankie/Area2D" to="Frankie" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Frankie/Area2D" to="Frankie" method="_on_area_2d_area_exited"]
-[connection signal="area_entered" from="Zak/Area2D" to="Zak" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Zak/Area2D" to="Zak" method="_on_area_2d_area_exited"]
